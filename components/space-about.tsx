@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Zap, Target, Heart, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import { JourneyPlanet1 } from "./custom-planet-components";
 
 const aboutStats = [
   {
@@ -46,36 +47,57 @@ export default function SpaceAbout() {
             transition={{ duration: 0.8 }}
           >
             <div className="relative">
-              {/* Astronaut Avatar */}
-              <div className="relative">
-                <Image
-                  src="images/astra.png"
-                  alt="Astronaut Bunny"
-                  width={150}
-                  height={150}
-                  className="w-40 h-40 sm:w-24 sm:h-24 md:w-60 md:h-60 object-contain"
-                />
-              </div>
+              {/* Simple 2D Circular Orbital System */}
+              <div className="relative w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60 flex items-center justify-center">
+                {/* Orbiting Planet with top-to-bottom depth effect */}
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 12,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "linear",
+                  }}
+                >
+                  <motion.div
+                    className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    animate={{
+                      // Size: smallest at top, biggest at bottom
+                      scale: [0.4, 0.7, 1.3, 0.7, 0.4],
+                      // Opacity: lowest at top, highest at bottom
+                      opacity: [0.3, 0.6, 1, 0.6, 0.3],
+                    }}
+                    transition={{
+                      duration: 12,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: "easeInOut",
+                    }}
+                    style={{
+                      zIndex: 20, // Always behind bunny for clean effect
+                    }}
+                  >
+                    <JourneyPlanet1
+                      size={40}
+                      className="sm:w-10 sm:h-10 md:w-12 md:h-12"
+                    />
+                  </motion.div>
+                </motion.div>
 
-              {/* Online Status Dot */}
-              <motion.div
-                className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 bg-green-400 rounded-full flex items-center justify-center border-2 sm:border-4 border-gray-900"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.8, 1, 0.8],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                }}
-              >
-                <div className="w-1 h-1 sm:w-2 sm:h-2 md:w-3 md:h-3 bg-white rounded-full" />
-              </motion.div>
+                {/* Astronaut Bunny - Always in front */}
+                <div className="relative z-10">
+                  <Image
+                    src="images/astra.png"
+                    alt="Astronaut Bunny"
+                    width={120}
+                    height={120}
+                    className="mb-20 md:mb-0 sm:w-24 sm:h-24 md:w-60 md:h-60 object-contain"
+                  />
+                </div>
+              </div>
 
               {/* Name Tag */}
               <motion.div
-                className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 bg-gray-900/80 backdrop-blur-sm border border-blue-400/50 rounded-full px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm md:text-base text-blue-400 font-medium whitespace-nowrap"
+                className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 bg-gray-900/80 backdrop-blur-sm border border-blue-400/50 rounded-full px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm md:text-base text-blue-400 font-medium whitespace-nowrap z-30"
                 animate={{
                   opacity: [0.8, 1, 0.8],
                 }}

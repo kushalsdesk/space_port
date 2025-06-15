@@ -2,6 +2,7 @@
 
 import { motion, number } from "framer-motion";
 import { CometTrail, Cosmos } from "./custom-planet-components";
+import SkillsComet from "./skills-comet";
 
 const skillCategories = [
   {
@@ -143,12 +144,10 @@ function SkillCategory({ category, index }: { category: any; index: number }) {
 export default function SpaceSkills() {
   return (
     <section id="skills" className="py-20 relative z-10">
-      <CometTrail
-        size={200}
-        className="top-[15%] right-40 opacity-25 md:opacity-60 "
-      />
+      {/* Skills Comet - only appears in this section */}
+      <SkillsComet />
 
-      <div className="container mx-auto px-4 md:px-6 relative">
+      <div className="mx-auto container px-4 md:px-6 relative">
         <div className="mx-auto max-w-6xl text-center mb-16">
           <motion.h2
             className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent"

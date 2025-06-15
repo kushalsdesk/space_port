@@ -9,7 +9,6 @@ import {
   ProjectPlanet2,
   ProjectPlanet3,
   ProjectPlanet4,
-  CometTrail,
   Cosmos,
 } from "./custom-planet-components";
 
@@ -153,7 +152,10 @@ export default function SpaceProjects() {
   return (
     <section id="projects" className="py-20 relative z-10">
       {/* Comet Trail */}
-      <Cosmos size={450} className="top-[15%] right-20 md:left-20 opacity-80" />
+      <Cosmos
+        size={450}
+        className="top-[15%] -right-20 md:left-20 opacity-80"
+      />
 
       <div className="container mx-auto px-4 md:px-6 relative">
         <div className="mx-auto max-w-6xl text-center mb-16">

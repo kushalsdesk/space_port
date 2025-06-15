@@ -89,7 +89,7 @@ export default function FloatingRocket() {
         alt="Space Rocket"
         width={60}
         height={60}
-        className="w-8 h-8 sm:w-12 sm:h-12 md:w-28 md:h-28 object-contain"
+        className="sm:w-16 sm:h-16 md:w-28 md:h-28 object-contain"
       />
     </motion.div>
   );
