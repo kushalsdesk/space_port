@@ -8,17 +8,33 @@ const skillCategories = [
   {
     name: "Frontend",
     color: "#60a5fa",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    skills: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Zustand",
+      "React Tanstack Query",
+    ],
   },
   {
     name: "Backend",
     color: "#10b981",
-    skills: ["Node.js", "Python", "PostgreSQL", "MongoDB", "GraphQL"],
+    skills: [
+      "Node.js",
+      "Express",
+      "NestJS",
+      "Golang",
+      "PostgreSQL",
+      "MongoDB",
+      "GraphQL",
+    ],
   },
   {
-    name: "Design",
+    name: "Tools",
     color: "#a855f7",
-    skills: ["UI/UX", "Figma", "Adobe Suite", "Prototyping"],
+    skills: ["Neovim", "Linux", "Git", "Postman", "Podman"],
   },
   {
     name: "DevOps",

@@ -1,27 +1,27 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
-import { Rocket, Satellite, Star } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Rocket, Satellite, Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function SpaceHero() {
-  const [typedText, setTypedText] = useState("")
-  const fullText = "Space Explorer & Developer"
+  const [typedText, setTypedText] = useState("");
+  const fullText = "Space Explorer & Developer";
 
   useEffect(() => {
-    let currentIndex = 0
+    let currentIndex = 0;
     const typingInterval = setInterval(() => {
       if (currentIndex <= fullText.length) {
-        setTypedText(fullText.substring(0, currentIndex))
-        currentIndex++
+        setTypedText(fullText.substring(0, currentIndex));
+        currentIndex++;
       } else {
-        clearInterval(typingInterval)
+        clearInterval(typingInterval);
       }
-    }, 100)
+    }, 100);
 
-    return () => clearInterval(typingInterval)
-  }, [])
+    return () => clearInterval(typingInterval);
+  }, []);
 
   return (
     <section
@@ -53,7 +53,7 @@ export default function SpaceHero() {
         >
           Welcome to My
           <br />
-          <span className="text-white">Digital Universe</span>
+          <span className="text-purple-400">Digital Universe</span>
         </motion.h1>
 
         <motion.h2
@@ -72,8 +72,8 @@ export default function SpaceHero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          Embark on a journey through my cosmic portfolio. Discover projects that reach for the stars and skills that
-          span galaxies.
+          Embark on a journey through my cosmic portfolio. Discover projects
+          that reach for the stars and skills that span galaxies.
         </motion.p>
 
         <motion.div
@@ -88,7 +88,7 @@ export default function SpaceHero() {
           </Button>
           <Button
             variant="outline"
-            className="w-full sm:w-auto border-teal-400 text-teal-400 hover:bg-teal-400/10 px-6 py-3"
+            className="w-full sm:w-auto border-teal-400 text-teal-400 hover:bg-teal-400/10 hover:text-white px-6 py-3"
           >
             <Star className="mr-2 h-4 w-4" />
             Explore Galaxy
@@ -96,5 +96,5 @@ export default function SpaceHero() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
