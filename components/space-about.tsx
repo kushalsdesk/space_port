@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Zap, Target, Heart, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { JourneyPlanet1 } from "./custom-planet-components";
+import { JourneyPlanet1, NebulaBackground } from "./custom-planet-components";
 
 const aboutStats = [
   {
@@ -36,6 +36,10 @@ const aboutStats = [
 export default function SpaceAbout() {
   return (
     <section id="about" className="py-12 sm:py-16 lg:py-20 relative z-10">
+      <NebulaBackground
+        size={300}
+        className="bottom-10 md:-bottom-10 right-10 opacity-15"
+      />
       <div className="container px-4 md:px-6 relative max-w-7xl mx-auto">
         <div className="mx-auto max-w-4xl text-center">
           {/* User Profile with Astronaut */}
@@ -154,8 +158,8 @@ export default function SpaceAbout() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="bg-gray-900/50 backdrop-blur-sm border-gray-700/50 hover:border-teal-400/50 transition-all duration-300 group h-full">
-                  <CardContent className="p-4 sm:p-6 text-center">
+                <Card className="bg-black/60 backdrop-blur-sm border-gray-700/50 hover:border-teal-400/50 transition-all duration-300 group h-full">
+                  <CardContent className=" p-4 sm:p-6 text-center">
                     <motion.div
                       className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r ${stat.color} mb-3 sm:mb-4`}
                       whileHover={{ scale: 1.1, rotate: 360 }}

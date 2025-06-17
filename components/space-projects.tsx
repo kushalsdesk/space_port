@@ -1,5 +1,7 @@
 "use client";
 
+import type React from "react";
+
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Rocket } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,7 +21,7 @@ const projects = [
     description:
       "A stellar e-commerce platform that connects merchants across the digital galaxy. Built with Next.js and powered by cosmic-scale performance.",
     tech: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
-    color: "from-orange-400 to-red-400",
+    color: "#f97316", // Orange
     PlanetComponent: ProjectPlanet1,
     status: "Orbiting Production",
     github: "#",
@@ -31,7 +33,7 @@ const projects = [
     description:
       "Real-time analytics dashboard that processes data at light speed. Visualizes complex metrics through an intuitive cosmic interface.",
     tech: ["React", "D3.js", "Node.js", "MongoDB"],
-    color: "from-red-400 to-pink-400",
+    color: "#ef4444", // Red
     PlanetComponent: ProjectPlanet2,
     status: "Active Mission",
     github: "#",
@@ -43,7 +45,7 @@ const projects = [
     description:
       "Instant messaging app that connects teams across different time zones and galaxies. Features real-time collaboration tools.",
     tech: ["React Native", "Socket.io", "Express", "Redis"],
-    color: "from-green-400 to-emerald-400",
+    color: "#10b981", // Green
     PlanetComponent: ProjectPlanet3,
     status: "Deep Space",
     github: "#",
@@ -55,7 +57,7 @@ const projects = [
     description:
       "This very portfolio you're exploring! A journey through my digital universe showcasing skills and projects.",
     tech: ["Next.js", "Framer Motion", "Tailwind", "TypeScript"],
-    color: "from-purple-400 to-blue-400",
+    color: "#8b5cf6", // Purple
     PlanetComponent: ProjectPlanet4,
     status: "Current Location",
     github: "#",
@@ -71,7 +73,21 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
     >
-      <Card className="bg-gray-900/50 backdrop-blur-sm border-gray-700/50 hover:border-teal-400/50 transition-all duration-300 group h-full">
+      <Card
+        className="bg-black/60 backdrop-blur-sm border-gray-700/50 hover:border-teal-400/50 transition-all duration-300 group h-full"
+        style={
+          {
+            borderColor: project.color + "50",
+            "--hover-border": project.color + "80",
+          } as React.CSSProperties
+        }
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = project.color + "80";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = project.color + "50";
+        }}
+      >
         <CardContent className="p-6">
           {/* Project Header */}
           <div className="flex items-start justify-between mb-4">
@@ -79,7 +95,8 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
               <project.PlanetComponent size={48} />
               <div>
                 <h3
-                  className={`text-xl font-bold bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}
+                  className="text-xl font-bold"
+                  style={{ color: project.color }}
                 >
                   {project.name}
                 </h3>
@@ -87,7 +104,8 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
               </div>
             </div>
             <motion.div
-              className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${project.color} text-black`}
+              className="px-3 py-1 rounded-full text-xs font-medium text-black"
+              style={{ backgroundColor: project.color }}
               animate={{
                 opacity: [0.8, 1, 0.8],
               }}
@@ -135,7 +153,8 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
             </Button>
             <Button
               size="sm"
-              className={`flex-1 bg-gradient-to-r ${project.color} hover:opacity-90 text-black font-medium`}
+              className="flex-1 hover:opacity-90 text-black font-medium"
+              style={{ backgroundColor: project.color }}
               onClick={() => window.open(project.live, "_blank")}
             >
               <ExternalLink className="h-4 w-4 mr-2" />
@@ -151,39 +170,16 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
 export default function SpaceProjects() {
   return (
     <section id="projects" className="py-20 relative z-10">
-      {/* Comet Trail */}
+      {/* Cosmos Trail */}
       <Cosmos
         size={450}
-        className="top-[15%] -right-20 md:left-20 opacity-80"
+        className="top-1/4 md:top-[15%] -right-20 md:left-20 opacity-80"
       />
 
       <div className="container mx-auto px-4 md:px-6 relative">
         <div className="mx-auto max-w-6xl text-center mb-16">
-          <motion.div
-            className="mb-6 flex justify-center"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.div
-              className="text-5xl"
-              animate={{
-                y: [0, -10, 0],
-                rotate: [0, 5, -5, 0],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-              }}
-            >
-              🚀
-            </motion.div>
-          </motion.div>
-
           <motion.h2
-            className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent"
+            className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-white/80"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}

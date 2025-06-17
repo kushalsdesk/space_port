@@ -1,9 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { Star } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
 import {
   JourneyPlanet1,
   JourneyPlanet2,
@@ -21,7 +19,11 @@ const journeyItems = [
     description:
       "Leading development of enterprise SaaS platform. Architecting scalable solutions using Next.js, Node.js, and PostgreSQL.",
     PlanetComponent: JourneyPlanet1,
-    color: "from-purple-400 to-pink-600",
+    color: "#a855f7",
+    planetName: "Nexus Prime",
+    classification: "Tech Hub",
+    status: "ACTIVE",
+    coordinates: "Sector 7G-Alpha",
   },
   {
     year: "2020 - 2023",
@@ -30,7 +32,11 @@ const journeyItems = [
     description:
       "Developed and maintained multiple client projects. Implemented CI/CD pipelines and improved performance by 40%.",
     PlanetComponent: JourneyPlanet2,
-    color: "from-green-400 to-blue-500",
+    color: "#10b981",
+    planetName: "Terra Nova",
+    classification: "Development World",
+    status: "COMPLETED",
+    coordinates: "Sector 5B-Beta",
   },
   {
     year: "2018 - 2020",
@@ -39,7 +45,11 @@ const journeyItems = [
     description:
       "Created responsive web applications for various clients using React and Vue.js. Collaborated with designers to implement pixel-perfect UIs.",
     PlanetComponent: JourneyPlanet3,
-    color: "from-yellow-400 to-orange-500",
+    color: "#f59e0b",
+    planetName: "Craftworld",
+    classification: "Creative Colony",
+    status: "COMPLETED",
+    coordinates: "Sector 3C-Gamma",
   },
   {
     year: "2018",
@@ -48,7 +58,11 @@ const journeyItems = [
     description:
       "Graduated with honors. Specialized in web technologies and software engineering.",
     PlanetComponent: JourneyPlanet4,
-    color: "from-blue-400 to-cyan-500",
+    color: "#06b6d4",
+    planetName: "Academus",
+    classification: "Knowledge Station",
+    status: "COMPLETED",
+    coordinates: "Sector 1A-Delta",
   },
   {
     year: "2017",
@@ -57,35 +71,25 @@ const journeyItems = [
     description:
       "Won first place for developing an innovative accessibility solution for visually impaired users.",
     PlanetComponent: JourneyPlanet5,
-    color: "from-red-400 to-orange-500",
+    color: "#ef4444",
+    planetName: "Innovation Base",
+    classification: "Research Outpost",
+    status: "COMPLETED",
+    coordinates: "Sector 0X-Epsilon",
   },
 ];
 
 export default function SpaceJourney() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start center", "end center"],
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
-
-  const pathLength = useTransform(smoothProgress, [0, 1], [0, 1]);
-
   return (
     <section ref={sectionRef} id="journey" className="py-20 relative z-10">
       {/* Single Background Nebula */}
-      <NebulaBackground size={300} className="top-[15%] left-10 opacity-65" />
 
       <div className="container mx-auto px-4 md:px-6 relative">
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-6xl text-center">
           <motion.h2
-            className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent"
+            className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl text-white/80"
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -103,88 +107,139 @@ export default function SpaceJourney() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-4xl">
-          {/* Space travel path */}
-          <svg
-            className="absolute left-1/2 top-0 h-full w-2 -ml-1 z-0"
-            viewBox="0 0 2 100"
-            preserveAspectRatio="none"
-          >
-            <motion.path
-              d="M1,0 Q1.5,25 1,50 Q0.5,75 1,100"
-              stroke="url(#gradient)"
-              strokeWidth="0.1"
-              fill="none"
-              strokeDasharray="0.5 0.5"
-              style={{ pathLength }}
-            />
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#60a5fa" />
-                <stop offset="50%" stopColor="#a855f7" />
-                <stop offset="100%" stopColor="#06b6d4" />
-              </linearGradient>
-            </defs>
-          </svg>
-
+        <div className="relative mx-auto max-w-6xl">
           {/* Journey items */}
-          <div className="space-y-16 relative z-10">
-            {journeyItems.map((item, index) => {
-              const isEven = index % 2 === 0;
-
-              return (
-                <motion.div
-                  key={index}
-                  className="relative"
-                  initial={{ opacity: 0, x: isEven ? -100 : 100 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                >
-                  {/* Planet/milestone marker */}
+          <div className="space-y-24 relative z-10">
+            {journeyItems.map((item, index) => (
+              <motion.div
+                key={index}
+                className="relative"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+              >
+                {/* Universal Layout - Same for all screen sizes */}
+                <div className="flex flex-col items-center">
+                  {/* Top half of details */}
                   <motion.div
-                    className="absolute left-1/2 -ml-8 w-16 h-16 flex items-center justify-center z-10"
-                    initial={{ opacity: 0.5, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    className="w-full text-center font-mono mb-6"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
                   >
-                    <item.PlanetComponent size={64} />
+                    {/* Status and planet info */}
+                    <div className="flex items-center justify-center gap-2 mb-3">
+                      <div
+                        className="w-2 h-2 rounded-full animate-pulse"
+                        style={{ backgroundColor: item.color }}
+                      />
+                      <span className="text-xs text-gray-400 uppercase tracking-wider">
+                        {item.status}
+                      </span>
+                    </div>
+                    <h3
+                      className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2"
+                      style={{ color: item.color }}
+                    >
+                      {item.planetName}
+                    </h3>
+                    <p className="text-sm md:text-base text-gray-400 uppercase tracking-wider">
+                      {item.classification}
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-500">
+                      {item.coordinates}
+                    </p>
                   </motion.div>
 
-                  {/* Content card */}
-                  <div
-                    className={`${isEven ? "pr-8 md:pr-16" : "pl-8 md:pl-16"} ${isEven ? "text-right" : "text-left"}`}
+                  {/* Planet centered - Bigger on desktop */}
+                  <motion.div
+                    className="relative mb-6"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
                   >
-                    <Card
-                      className={`${
-                        isEven ? "ml-auto" : "mr-auto"
-                      } max-w-md bg-gray-900/50 backdrop-blur-sm border-gray-700/50 hover:border-teal-400/50 transition-all duration-300 group`}
-                    >
-                      <CardContent className="p-6">
-                        <div
-                          className={`mb-2 text-sm font-medium text-teal-400 flex items-center ${isEven ? "justify-end" : "justify-start"}`}
-                        >
-                          <Star className="h-3 w-3 mr-1" />
-                          {item.year}
-                        </div>
-                        <h3
-                          className={`mb-1 text-xl font-bold text-white bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}
-                        >
-                          {item.title}
-                        </h3>
-                        <div className="mb-4 text-sm text-blue-400">
-                          {item.company}
-                        </div>
-                        <p className="text-slate-300 text-sm leading-relaxed">
-                          {item.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </motion.div>
-              );
-            })}
+                    <item.PlanetComponent className="md:w-44 md:h-44 lg:w-52 lg:h-52" />
+
+                    {/* Scanning rings - Responsive sizes */}
+                    <motion.div
+                      className="absolute inset-0 border-2 rounded-full"
+                      style={{ borderColor: item.color + "40" }}
+                      animate={{
+                        scale: [1, 1.3, 1],
+                        opacity: [0.3, 0.8, 0.3],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Number.POSITIVE_INFINITY,
+                        ease: "easeInOut",
+                      }}
+                    />
+                    <motion.div
+                      className="absolute inset-0 border rounded-full"
+                      style={{ borderColor: item.color + "20" }}
+                      animate={{
+                        scale: [1, 1.5, 1],
+                        opacity: [0.2, 0.6, 0.2],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Number.POSITIVE_INFINITY,
+                        ease: "easeInOut",
+                        delay: 0.5,
+                      }}
+                    />
+                  </motion.div>
+
+                  {/* Bottom half of details */}
+                  <motion.div
+                    className="w-full text-center font-mono"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.2 + 0.4 }}
+                  >
+                    {/* Mission details */}
+                    <div className="space-y-3">
+                      <div className="text-cyan-400 text-sm md:text-base uppercase tracking-wider">
+                        {item.year}
+                      </div>
+                      <h4 className="text-white font-semibold text-xl md:text-2xl">
+                        {item.title}
+                      </h4>
+                      <p className="text-blue-400 text-base md:text-lg">
+                        {item.company}
+                      </p>
+                      <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {/* Progress indicator */}
+                    <div className="flex items-center justify-center gap-3 mt-6">
+                      <div className="w-20 md:w-24 h-1 bg-gray-700 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full rounded-full"
+                          style={{ backgroundColor: item.color }}
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "100%" }}
+                          viewport={{ once: true }}
+                          transition={{
+                            duration: 1.5,
+                            delay: index * 0.2 + 0.6,
+                          }}
+                        />
+                      </div>
+                      <span className="text-xs md:text-sm text-gray-400">
+                        COMPLETE
+                      </span>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

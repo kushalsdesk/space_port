@@ -10,6 +10,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BlackHole } from "./custom-planet-components";
 
 const socialLinks = [
   {
@@ -107,31 +108,13 @@ export default function SpaceContact() {
       id="contact"
       className="py-12 mb-10 sm:py-16 lg:py-20 relative z-10 border-t border-gray-800/50"
     >
+      <BlackHole
+        size={650}
+        className="top-1/4 md:top-3 -right-10 md:right-0 opacity-80"
+      />
+
       <div className="container px-4 md:px-6 relative max-w-7xl mx-auto">
         <div className="mx-auto max-w-4xl text-center mb-8 sm:mb-12 lg:mb-16">
-          <motion.div
-            className="mb-4 sm:mb-6 flex justify-center"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.div
-              className="text-3xl sm:text-4xl lg:text-5xl"
-              animate={{
-                opacity: [0.5, 1, 0.5],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-              }}
-            >
-              📡
-            </motion.div>
-          </motion.div>
-
           <motion.h2
             className="mb-3 sm:mb-4 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent"
             initial={{ y: 50, opacity: 0 }}

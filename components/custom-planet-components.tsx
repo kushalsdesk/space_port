@@ -15,9 +15,6 @@ export function JourneyPlanet1({
     <motion.div
       className={`relative ${className}`}
       style={{ width: size, height: size }}
-      animate={{
-        rotate: [0, 360],
-      }}
       transition={{
         duration: 25,
         repeat: Number.POSITIVE_INFINITY,
@@ -46,9 +43,6 @@ export function JourneyPlanet2({
     <motion.div
       className={`relative ${className}`}
       style={{ width: size, height: size }}
-      animate={{
-        rotate: [0, 360],
-      }}
       transition={{
         duration: 30,
         repeat: Number.POSITIVE_INFINITY,
@@ -77,9 +71,6 @@ export function JourneyPlanet3({
     <motion.div
       className={`relative ${className}`}
       style={{ width: size, height: size }}
-      animate={{
-        rotate: [0, 360],
-      }}
       transition={{
         duration: 20,
         repeat: Number.POSITIVE_INFINITY,
@@ -108,9 +99,6 @@ export function JourneyPlanet4({
     <motion.div
       className={`relative ${className}`}
       style={{ width: size, height: size }}
-      animate={{
-        rotate: [0, 360],
-      }}
       transition={{
         duration: 35,
         repeat: Number.POSITIVE_INFINITY,
@@ -139,9 +127,6 @@ export function JourneyPlanet5({
     <motion.div
       className={`relative ${className}`}
       style={{ width: size, height: size }}
-      animate={{
-        rotate: [0, 360],
-      }}
       transition={{
         duration: 18,
         repeat: Number.POSITIVE_INFINITY,
@@ -342,6 +327,38 @@ export function Cosmos({
       <Image
         src="/images/cosmos.png"
         alt="Cosmic Nebula"
+        width={size}
+        height={size}
+        className="object-contain w-full h-full"
+      />
+    </motion.div>
+  );
+}
+
+export function BlackHole({
+  size = 200,
+  className = "",
+}: {
+  size?: number;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      className={`absolute ${className}`}
+      style={{ width: size, height: size }}
+      animate={{
+        opacity: [0.2, 0.4, 0.2],
+        scale: [1, 1.1, 1],
+      }}
+      transition={{
+        duration: 8,
+        repeat: Number.POSITIVE_INFINITY,
+        ease: "easeInOut",
+      }}
+    >
+      <Image
+        src="/images/blackhole.png"
+        alt="Black Hole"
         width={size}
         height={size}
         className="object-contain w-full h-full"
