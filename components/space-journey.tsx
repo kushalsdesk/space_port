@@ -103,7 +103,7 @@ export default function SpaceJourney() {
             initial={{ width: 0 }}
             whileInView={{ width: 80 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
           />
         </div>
 
@@ -117,7 +117,7 @@ export default function SpaceJourney() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                transition={{ duration: 0.4, delay: index * 0.2 }}
               >
                 {/* Universal Layout - Same for all screen sizes */}
                 <div className="flex flex-col items-center">
@@ -127,7 +127,7 @@ export default function SpaceJourney() {
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    transition={{ duration: 0.3, delay: index * 0.2 }}
                   >
                     {/* Status and planet info */}
                     <div className="flex items-center justify-center gap-2 mb-3">

@@ -3,14 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const navItems = [
-  { name: "Home", href: "#home", planet: "🏠" },
-  { name: "About", href: "#about", planet: "👨‍🚀" },
-  { name: "Journey", href: "#journey", planet: "🚀" },
-  { name: "Skills", href: "#skills", planet: "⚡" },
-  { name: "Projects", href: "#projects", planet: "🌟" },
-  { name: "Contact", href: "#contact", planet: "📡" },
+  { name: "Home", href: "#home", icon: "/nav/home.svg" },
+  { name: "About", href: "#about", icon: "/nav/user.svg" },
+  { name: "Journey", href: "#journey", icon: "/nav/timeline.svg" },
+  { name: "Skills", href: "#skills", icon: "/nav/skills.svg" },
+  { name: "Projects", href: "#projects", icon: "/nav/projects.svg" },
+  { name: "Contact", href: "#contact", icon: "/nav/email.svg" },
 ];
 
 export default function SpaceNavigation() {
@@ -37,7 +38,7 @@ export default function SpaceNavigation() {
   }, []);
 
   return (
-    <div className="fixed bottom-6 mx-auto w-full z-50">
+    <div className="fixed bottom-2 mx-auto w-full z-50">
       <motion.nav
         className="flex justify-center"
         initial={{ y: 100, opacity: 0 }}
@@ -45,7 +46,7 @@ export default function SpaceNavigation() {
         transition={{ delay: 0.5, duration: 0.5 }}
       >
         <motion.div
-          className="flex items-center gap-1 sm:gap-2 rounded-md bg-black/80 backdrop-blur-md border border-gray-700/50 px-2 sm:px-4 py-2 sm:py-3 shadow-2xl"
+          className="flex items-center gap-1 sm:gap-2 rounded-md bg-black/60 backdrop-blur-md border border-gray-700/50 px-2 sm:px-4 py-2 sm:py-3 shadow-2xl"
           layout
         >
           {navItems.map((item) => (
@@ -53,14 +54,20 @@ export default function SpaceNavigation() {
               <motion.div
                 className={`relative flex h-12 w-12 sm:h-10 sm:w-10 items-center justify-center rounded-md transition-all duration-300 ${
                   activeSection === item.href.substring(1)
-                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white scale-105"
+                    ? "bg-gradient-to-r from-black-500 to-grey-600 text-white scale-105"
                     : "text-slate-400 hover:text-white hover:bg-gray-800/50"
                 }`}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 title={item.name}
               >
-                <span className="text-xs sm:text-md">{item.planet}</span>
+                <Image
+                  src={item.icon || "/placeholder.svg"}
+                  alt={item.name}
+                  width={20}
+                  height={20}
+                  className="object-contain"
+                />
 
                 {/* Orbital ring for active item */}
                 {activeSection === item.href.substring(1) && (

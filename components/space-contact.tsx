@@ -76,7 +76,7 @@ function SocialButton({ social, index }: { social: any; index: number }) {
     >
       <Button
         variant="outline"
-        className="w-full h-auto p-3 sm:p-4 lg:p-6 border-gray-700/50 hover:border-teal-400/50 bg-gray-900/30 backdrop-blur-sm group transition-all duration-300"
+        className="w-full h-auto p-3 sm:p-4 lg:p-6 border-gray-700/50 hover:border-teal-400/50 bg-black/30 backdrop-blur-sm group transition-all duration-300"
         onClick={handleClick}
       >
         <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 w-full">

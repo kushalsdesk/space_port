@@ -217,29 +217,30 @@ export default function SpaceProjects() {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <p className="text-slate-400 mb-6">
-            Ready to embark on a new mission together?
-          </p>
-          <Button
-            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 group"
-            onClick={() =>
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
+        {/* Call to Action
+          <motion.div
+            className="text-center mt-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <Rocket className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-            Initiate Contact
-          </Button>
-        </motion.div>
+            <p className="text-slate-400 mb-6">
+              Ready to embark on a new mission together?
+            </p>
+            <Button
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 group"
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              <Rocket className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+              Initiate Contact
+            </Button>
+          </motion.div>
+        */}
       </div>
     </section>
   );

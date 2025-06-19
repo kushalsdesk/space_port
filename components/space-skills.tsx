@@ -84,7 +84,7 @@ function SkillCategory({ category, index }: { category: any; index: number }) {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
+      transition={{ duration: 0.3, delay: index * 0.15 }}
     >
       {/* Category Title */}
       <motion.h3

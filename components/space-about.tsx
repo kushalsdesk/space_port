@@ -16,19 +16,19 @@ const aboutStats = [
   {
     icon: <Target className="h-5 w-5 sm:h-6 sm:w-6" />,
     label: "Projects Completed",
-    value: "50+",
+    value: "25+",
     color: "from-green-400 to-blue-500",
   },
   {
     icon: <Heart className="h-5 w-5 sm:h-6 sm:w-6" />,
     label: "Happy Clients",
-    value: "30+",
+    value: "20+",
     color: "from-pink-400 to-red-500",
   },
   {
     icon: <Users className="h-5 w-5 sm:h-6 sm:w-6" />,
     label: "Team Projects",
-    value: "20+",
+    value: "10+",
     color: "from-purple-400 to-indigo-500",
   },
 ];
